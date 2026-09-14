@@ -1,0 +1,52 @@
+# Find nearest yellow cone for every blue cone
+import csv
+import math
+centre=open("centreline.csv","w")
+centrewriter=csv.writer(centre)
+
+centrewriter.writerow(["Blue_x","Blue_y",
+                       "Yellow_x","Yellow_y",
+                       "Midpoint_x","Midpoint_y"])
+
+
+for bluecone in cones:
+
+    if bluecone[0]=="blue":
+
+        bx=bluecone[1]
+        by=bluecone[2]
+
+        mindistance=999999
+        nearestx=0
+        nearesty=0
+
+        for yellowcone in cones:
+
+            if yellowcone[0]=="yellow":
+
+                yx=yellowcone[1]
+                yy=yellowcone[2]
+
+                distance=math.sqrt(
+                    (bx-yx)*(bx-yx) +
+                    (by-yy)*(by-yy)
+                )
+
+                if distance<mindistance:
+
+                    mindistance=distance
+                    nearestx=yx
+                    nearesty=yy
+
+
+        # Midpoint
+        midx=(bx+nearestx)/2
+        midy=(by+nearesty)/2
+
+        centrewriter.writerow([
+            bx,by,nearestx,nearesty,midx,midy
+        ])
+
+centre.close()
+
+print("All files created successfully!")

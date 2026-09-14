@@ -1,0 +1,245 @@
+1. x = int(input("Type a number: "))
+print(x)
+
+a = 0
+list = []
+list1 = []
+list2 = []
+
+# Take strings as input
+for i in range(x):
+    ele = input("Enter a string: ")
+    list.append(ele)
+
+print(list)
+
+# Convert strings to lowercase
+# Also calculate total number of characters
+for i in range(x):
+    list1.append(list[i].lower())
+    a += len(list[i])
+
+print(list1)
+print("Total characters:", a)
+
+# Put every character into list2
+for i in range(x):
+    for j in range(len(list[i])):
+        list2.append(list[i][j])
+
+print(list2)
+
+# Count each character and remove it after counting
+while len(list2) > 0:
+
+    character = list2[0]
+    y = 0
+
+    # Count the character
+    for j in range(len(list2)):
+        if character == list2[j]:
+            y += 1
+
+    print(character)
+    print(y)
+
+    # Remove all occurrences of the character
+    while character in list2:
+        list2.remove(character)
+
+
+2. class P2:
+
+    def input(self):
+        self.x = int(input("Type a number: "))
+        self.list = []
+
+        # Take strings as input
+        for i in range(self.x):
+            ele = input("Enter a string: ")
+            self.list.append(ele)
+
+        print("Original list:", self.list)
+
+    def convert(self):
+        self.list1 = []
+
+        # Convert strings to lowercase
+        for i in range(self.x):
+            self.list1.append(self.list[i].lower())
+
+    def sort(self):
+        # Selection sort
+        n = len(self.list1)
+
+        for i in range(n):
+            min_index = i
+
+            for j in range(i + 1, n):
+                if self.list1[j] < self.list1[min_index]:
+                    min_index = j
+
+            # Swap
+            self.list1[i], self.list1[min_index] = \
+                self.list1[min_index], self.list1[i]
+
+        print("Sorted list:", self.list1)
+
+
+# Create object
+obj = P2()
+
+# Call functions
+obj.input()
+obj.convert()
+obj.sort()
+
+
+3. class P2:
+
+    def input(self):
+        self.x = int(input("Type a number: "))
+        self.list = []
+
+        # Take strings as input
+        for i in range(self.x):
+            ele = input("Enter a string: ")
+            self.list.append(ele)
+
+        print("Original list:", self.list)
+
+    def convert(self):
+        self.list1 = []
+
+        # Convert strings to lowercase
+        for i in range(self.x):
+            self.list1.append(self.list[i].lower())
+
+    def sort(self):
+        # Selection sort
+        n = len(self.list1)
+
+        for i in range(n):
+            min_index = i
+
+            for j in range(i + 1, n):
+                if self.list1[j] < self.list1[min_index]:
+                    min_index = j
+
+            # Swap
+            self.list1[i], self.list1[min_index] = \
+                self.list1[min_index], self.list1[i]
+
+        print("Sorted list:", self.list1)
+    def binary_search(self):
+        search = input("Enter string to search: ")
+        search = search.lower()
+
+        low = 0
+        high = len(self.list1) - 1
+
+        while low <= high:
+            mid = (low + high) // 2
+
+            if self.list1[mid] == search:
+                print("String found at index:", mid)
+                return
+
+            elif search < self.list1[mid]:
+                high = mid - 1
+
+            else:
+                low = mid + 1
+
+        print("String not found")
+
+
+# Create object
+obj = P2()
+
+obj.input()
+obj.convert()
+obj.sort()
+obj.binary_search()
+
+4. m1 = int(input("Type row of first matrix: "))
+n1 = int(input("Type column of first matrix: "))
+m2 = int(input("Type row of second matrix: "))
+n2 = int(input("Type column of second matrix: "))
+if m2 != n1:
+    print("Matrix multiplication cannot be supported")
+    exit()
+arr1 = []
+arr2 = []
+arr = []
+print("Input elements of first matrix")
+for i in range(m1):
+    row = []
+    for j in range(n1):
+        ele1 = int(input())
+        row.append(ele1)
+    arr1.append(row)
+print("Input elements of second matrix")
+for i in range(m2):
+    row = []
+    for j in range(n2):
+        ele2 = int(input())
+        row.append(ele2)
+    arr2.append(row)
+# Create result matrix with 0
+for i in range(m1):
+    row = []
+    for j in range(n2):
+        row.append(0)
+    arr.append(row)
+# Matrix multiplication
+for i in range(m1):          # rows of first matrix
+    for j in range(n2):      # columns of second matrix
+        for k in range(n1):  # common dimension
+            arr[i][j] += arr1[i][k] * arr2[k][j]
+# Print result
+print("Result matrix:")
+for row in arr:
+    print(row)
+
+
+
+5. hash_table = [[], [], [], [], [], [], [], [], [], []]
+
+# Input numbers
+for i in range(n):
+    num = int(input("Enter number: "))
+
+    index = num % 10
+    hash_table[index].append(num)
+
+# Print hash table
+print("Hash Table:")
+
+for i in range(10):
+    print(i, ":", hash_table[i])
+
+7. n = int(input("Enter number of coordinates: "))
+list0 = []
+list1 = []
+list2 = []
+print("Enter x coordinate then y coordinate")
+for i in range(n):
+    ele1 = int(input())
+    ele2=int(input())
+    list1.append(ele1)
+    list2.append(ele2)
+x=int(input("Enter reference x-coordinate: "))
+y=int(input("Enter reference y-coordinates: "))
+for i in range(n):
+    ele3=((list1[i]-x)**2)+((list2[i]-y)**2)
+    list0.append(ele3)
+for i in range(n):
+     for j in range(0, n - i - 1):
+         if list0[j] > list0[j + 1]:
+            list0[j], list0[j + 1] = list0[j + 1], list0[j]
+            list1[j], list1[j + 1] = list1[j + 1], list1[j]
+            list2[j], list2[j + 1] = list2[j + 1], list2[j]
+for i in range (n):
+    print("(", list1[i], ",", list2[i], ")", end=" ")
+
