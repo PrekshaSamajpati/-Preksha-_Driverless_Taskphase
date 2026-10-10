@@ -1,16 +1,17 @@
 cmake_minimum_required(VERSION 3.8)
-project(wheel_speed)
+project(rt2_task)
 
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/TaskOne.msg"
+  "msg/RT2String.msg"
 )
 
 install(PROGRAMS
-  scripts/publisher.py
-  scripts/subscriber.py
+  scripts/node1.py
+  scripts/node2.py
+  scripts/node3.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
